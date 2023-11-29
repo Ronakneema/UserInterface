@@ -1,6 +1,5 @@
 from flask import Blueprint, flash, request, render_template
 views = Blueprint(__name__,"views")
-
 @views.route("/" , methods =["GET","POST"])
 def home():
     print()
@@ -18,3 +17,8 @@ def home():
 
     return render_template("index.html")
     #  add all the outputs here
+# @views.route('/')
+# def reload():
+#   print(request.form)
+#   # Cache.clear()
+#   return render_template("index.html",scroll='')

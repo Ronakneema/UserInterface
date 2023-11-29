@@ -52,33 +52,7 @@
 </head>
 
 <body>
-	<!-- {% with messages = get_flashed_messages() %}
-			{% if messages %}
-			
-			<script src="https://code.jquery.com/jquery-3.5.1.js"
-			integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-			crossorigin="anonymous"></script>
-			<script type="text/javascript">
-				$(document).on('submit','#todo-form',function(e)
-							   {
-				  console.log('hello');
-				  e.preventDefault();
-				  $.ajax({
-					type:'POST',
-					url:'/',
-					data:{
-					  todo:$("#todo").val()
-					},
-					success:function()
-					{
-					  alert(messages);
-					}
-				  })
-				});
-			  </script>
-			{% endif %}
-			{% endwith %} -->
-			
+
 	<div class="welcome-hero">
 		<div class="top-area">
 			<div class="header-area">
@@ -117,12 +91,36 @@
 			</div>
 		</div>
 		<div class="container">
-			
+			{% if scroll!=''%}
+			<div class="container model-search-content" id="gotit">
+				<div class="single-model-search " style="" id="result">
+					<h2 class=" col-sm-11 mt-3" style="margin: 10px;">Your Health proider is {{name}}</h2>
+					<!-- </div>
+			<div class="welcome-hero-txt" id="result" style="padding: 0%!important;"> 	onclick="window.location.href='/';" -->
+					<div class=" col-sm-11" style="margin: 10px;">
+						<button type="submit" class=" col-sm-11"
+							style="color: rgb(41, 192, 74); border: 1px solid black; width: 100px;" id="target">
+							Got It
+						</button>
+					</div>
+
+					<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+					<script>
+
+						$(document).ready(function () {
+							$("#target").click(function () {
+								$("#gotit").hide();
+							});
+						}); 
+					</script>
+				</div>
+			</div>
+			{% endif %}
 			<div class="row" style="position: relative;">
 
 				<div class="col-md-12">
 					<div class="model-search-content">
-						<form  id="todo-form" method="post">
+						<form id="todo-form" method="post">
 							<!-- action="{{url_for('view.home')}}" -->
 							<div class="row">
 								<h5 style="margin: 30px;">Please provide the necessary information to verify the
@@ -133,7 +131,7 @@
 									<div class="single-model-search row">
 										<h2 class=" col-sm-4">InscClaimAmtReimbursed</h2>
 										<div class=" col-sm-6">
-											<input class="form-control" type="text" id="InscClaimAmtReimbursed"
+											<input class="form-control" type="text" id="InscClaimAmtReimbursed" required
 												name="InscClaimAmtReimbursed">
 										</div>
 									</div>
@@ -142,14 +140,14 @@
 										<h2 class=" col-sm-4">IPAnnualReimbursementAmt</h2>
 										<div class=" col-sm-6">
 											<input class="form-control" type="text" id="IPAnnualReimbursementAmt"
-												name="IPAnnualReimbursementAmt">
+												required name="IPAnnualReimbursementAmt">
 										</div>
 									</div>
 
 									<div class="single-model-search row">
 										<h2 class=" col-sm-4">IPAnnualDeductibleAmt</h2>
 										<div class=" col-sm-6">
-											<input class="form-control" type="text" id="IPAnnualDeductibleAmt"
+											<input class="form-control" type="text" id="IPAnnualDeductibleAmt" required
 												name="IPAnnualDeductibleAmt">
 										</div>
 									</div>
@@ -158,14 +156,14 @@
 										<h2 class=" col-sm-4">OPAnnualReimbursementAmt</h2>
 										<div class=" col-sm-6">
 											<input class="form-control" type="text" id="OPAnnualReimbursementAmt"
-												name="OPAnnualReimbursementAmt">
+												required name="OPAnnualReimbursementAmt">
 										</div>
 									</div>
 
 									<div class="single-model-search row">
 										<h2 class=" col-sm-4">OPAnnualDeductibleAmt</h2>
 										<div class=" col-sm-6">
-											<input class="form-control" type="text" id="OPAnnualDeductibleAmt"
+											<input class="form-control" type="text" id="OPAnnualDeductibleAmt" required
 												name="OPAnnualDeductibleAmt">
 										</div>
 									</div>
@@ -173,161 +171,167 @@
 									<div class="single-model-search row">
 										<h2 class=" col-sm-4">Age</h2>
 										<div class=" col-sm-6">
-											<input class="form-control" type="text" id="Age" name="Age">
+											<input class="form-control" type="text" id="Age" name="Age" required>
 										</div>
 									</div>
 									<div class="single-model-search row">
 										<h2 class=" col-sm-4">DaysAdmitted</h2>
 										<div class=" col-sm-6">
-											<input class="form-control" type="text" id="DaysAdmitted" name="DaysAdmitted">
+											<input class="form-control" type="text" id="DaysAdmitted"
+												name="DaysAdmitted" required>
 										</div>
 									</div>
 									<div class="single-model-search row">
 										<h2 class=" col-sm-4">TotalDiagnosis</h2>
 										<div class=" col-sm-6">
-											<input class="form-control" type="text" id="TotalDiagnosis" name="TotalDiagnosis">
+											<input class="form-control" type="text" id="TotalDiagnosis"
+												name="TotalDiagnosis" required>
 										</div>
 									</div>
 									<div class="single-model-search row">
 										<h2 class=" col-sm-4">TotalProcedure</h2>
 										<div class=" col-sm-6">
-											<input class="form-control" type="text" id="TotalProcedure" name="TotalProcedure">
+											<input class="form-control" type="text" id="TotalProcedure"
+												name="TotalProcedure" required>
 										</div>
 									</div>
 									<div class="single-model-search row">
 										<h2 class=" col-sm-4">EncounterType</h2>
 										<div class=" col-sm-6">
-											<input class="form-control" type="text" id="EncounterType" name="EncounterType">
+											<input class="form-control" type="text" id="EncounterType"
+												name="EncounterType" required>
 										</div>
 									</div>
 									<div class="single-model-search row">
 										<h2 class=" col-sm-4">Gender</h2>
-										<div class=" col-sm-6"> 
-										<select name="Gender" id="Gender">
-											<option value="" disabled selected>Select</option>
-											<option value="0">Male</option>
-											<option value="1">Female</option>
-											<option value="2">Other</option>
-										  </select>
+										<div class=" col-sm-6">
+											<select name="Gender" id="Gender" required>
+												<option value="" disabled selected>Select</option>
+												<option value="0">Male</option>
+												<option value="1">Female</option>
+												<option value="2">Other</option>
+											</select>
 										</div>
 									</div>
 									<div class="single-model-search row">
 										<h2 class=" col-sm-4">Race</h2>
-										<div class=" col-sm-6"> 
-										<select name="Race" id="Race">
-											<option value="" disabled selected>Select</option>
-											<option value="0">Race</option>
-											<option value="1">Race</option>
-											<option value="2">Race</option>
-										  </select>
+										<div class=" col-sm-6">
+											<select name="Race" id="Race" required>
+												<option value="" disabled selected>Select</option>
+												<option value="0">Race</option>
+												<option value="1">Race</option>
+												<option value="2">Race</option>
+											</select>
 										</div>
 									</div>
 									<div class="single-model-search row">
 										<h2 class=" col-sm-4">RenalDiseaseIndicator</h2>
 										<div class=" col-sm-6">
-											<input class="form-control" type="text" id="RenalDiseaseIndicator" name="RenalDiseaseIndicator">
+											<input class="form-control" type="text" id="RenalDiseaseIndicator"
+												name="RenalDiseaseIndicator" required>
 										</div>
 									</div>
 									<div class="single-model-search row">
 										<h2 class=" col-sm-4">Select all the Disease patient had.</h2>
 										<div class="single-model-search row">
 											<h2 class=" col-sm-4">ChronicCond_Alzheimer</h2>
-											<div class=" col-sm-1"> 
-												<input type="checkbox" name="ChronicCond_Alzheimer" value = "" />
+											<div class=" col-sm-1">
+												<input type="checkbox" name="ChronicCond_Alzheimer" value="" />
 											</div>
 										</div>
 										<h2 class=" col-sm-4"></h2>
 										<div class="single-model-search row">
 											<h2 class=" col-sm-4">ChronicCond_Heartfailure</h2>
-											<div class=" col-sm-1"> 
-												<input type="checkbox" name="ChronicCond_Heartfailure" value = "" />
+											<div class=" col-sm-1">
+												<input type="checkbox" name="ChronicCond_Heartfailure" value="" />
 											</div>
 										</div>
 										<h2 class=" col-sm-4"></h2>
 										<div class="single-model-search row">
 											<h2 class=" col-sm-4">ChronicCond_Alzheimer</h2>
-											<div class=" col-sm-1"> 
-												<input type="checkbox" name="ChronicCond_Alzheimer" value = "" />
+											<div class=" col-sm-1">
+												<input type="checkbox" name="ChronicCond_Alzheimer" value="" />
 											</div>
 										</div>
 										<h2 class=" col-sm-4"></h2>
 										<div class="single-model-search row">
 											<h2 class=" col-sm-4">ChronicCond_KidneyDisease</h2>
-											<div class=" col-sm-1"> 
-												<input type="checkbox" name="ChronicCond_KidneyDisease" value = "" />
+											<div class=" col-sm-1">
+												<input type="checkbox" name="ChronicCond_KidneyDisease" value="" />
 											</div>
 										</div>
 										<h2 class=" col-sm-4"></h2>
 										<div class="single-model-search row">
 											<h2 class=" col-sm-4">ChronicCond_Cancer</h2>
-											<div class=" col-sm-1"> 
-												<input type="checkbox" name="ChronicCond_Cancer" value = "" />
+											<div class=" col-sm-1">
+												<input type="checkbox" name="ChronicCond_Cancer" value="" />
 											</div>
 										</div>
 										<h2 class=" col-sm-4"></h2>
 										<div class="single-model-search row">
 											<h2 class=" col-sm-4">ChronicCond_ObstrPulmonary</h2>
-											<div class=" col-sm-1"> 
-												<input type="checkbox" name="ChronicCond_ObstrPulmonary" value = "" />
+											<div class=" col-sm-1">
+												<input type="checkbox" name="ChronicCond_ObstrPulmonary" value="" />
 											</div>
 										</div>
 										<h2 class=" col-sm-4"></h2>
 										<div class="single-model-search row">
 											<h2 class=" col-sm-4">ChronicCond_Depression</h2>
-											<div class=" col-sm-1"> 
-												<input type="checkbox" name="ChronicCond_Depression" value = "" />
+											<div class=" col-sm-1">
+												<input type="checkbox" name="ChronicCond_Depression" value="" />
 											</div>
 										</div>
 										<h2 class=" col-sm-4"></h2>
 										<div class="single-model-search row">
 											<h2 class=" col-sm-4">ChronicCond_Diabetes</h2>
-											<div class=" col-sm-1"> 
-												<input type="checkbox" name="ChronicCond_Diabetes" value = "" />
+											<div class=" col-sm-1">
+												<input type="checkbox" name="ChronicCond_Diabetes" value="" />
 											</div>
 										</div>
 										<h2 class=" col-sm-4"></h2>
 										<div class="single-model-search row">
 											<h2 class=" col-sm-4">ChronicCond_IschemicHeart</h2>
-											<div class=" col-sm-1"> 
-												<input type="checkbox" name="ChronicCond_IschemicHeart" value = "" />
+											<div class=" col-sm-1">
+												<input type="checkbox" name="ChronicCond_IschemicHeart" value="" />
 											</div>
 										</div>
 										<h2 class=" col-sm-4"></h2>
 										<div class="single-model-search row">
 											<h2 class=" col-sm-4">ChronicCond_Osteoporasis</h2>
-											<div class=" col-sm-1"> 
-												<input type="checkbox" name="ChronicCond_Osteoporasis" value = "" />
+											<div class=" col-sm-1">
+												<input type="checkbox" name="ChronicCond_Osteoporasis" value="" />
 											</div>
 										</div>
 										<h2 class=" col-sm-4"></h2>
 										<div class="single-model-search row">
 											<h2 class=" col-sm-4">ChronicCond_rheumatoidarthritis</h2>
-											<div class=" col-sm-1"> 
-												<input type="checkbox" name="ChronicCond_rheumatoidarthritis" value = "" />
+											<div class=" col-sm-1">
+												<input type="checkbox" name="ChronicCond_rheumatoidarthritis"
+													value="" />
 											</div>
 										</div>
 										<h2 class=" col-sm-4"></h2>
 										<div class="single-model-search row">
 											<h2 class=" col-sm-4">ChronicCond_stroke</h2>
-											<div class=" col-sm-1"> 
-												<input type="checkbox" name="ChronicCond_stroke" value = "" />
+											<div class=" col-sm-1">
+												<input type="checkbox" name="ChronicCond_stroke" value="" />
 											</div>
 										</div>
 									</div>
 									<div class="single-model-search row">
 										<h2 class=" col-sm-4">IsDead</h2>
-										<div class=" col-sm-6"> 
-										<select name="IsDead" id="Race">
-											<option value="" IsDead selected>Select</option>
-											<option value="0">Yes</option>
-											<option value="1">No</option>
-										  </select>
+										<div class=" col-sm-6">
+											<select name="IsDead" id="Race" required>
+												<option value="" IsDead selected>Select</option>
+												<option value="0">Yes</option>
+												<option value="1">No</option>
+											</select>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-12 col-sm-12">
 									<div class="single-model-search text-center">
-										<button  type="submit" class="welcome-btn model-search-btn"
+										<button type="submit" class="welcome-btn model-search-btn"
 											onclick="document.getElementById('result').scrollIntoView();">
 											Check policy
 										</button>
@@ -340,14 +344,14 @@
 				</div>
 			</div>
 		</div>
-		{% if scroll=='result'%}
+		<!-- {% if scroll=='result'%}
 		{{scroll}}
 		<div class="container">
 			<div class="welcome-hero-txt" id="result" style="padding: 0%!important;">
 				<h2>{{name}}</h2>
 			</div>
 		</div>
-		{% endif %}
+		{% endif %} -->
 
 
 		<script src="static/js/jquery.js"></script>
