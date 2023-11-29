@@ -1,8 +1,9 @@
 from flask import Blueprint, flash, request, render_template
 views = Blueprint(__name__,"views")
 
-@views.route("/" , methods =["POST"])
+@views.route("/" , methods =["GET","POST"])
 def home():
+    print()
     if request.method == "POST":
        # getting input with name = fname in HTML form
        first_name = request.form.get("InscClaimAmtReimbursed")
